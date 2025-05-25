@@ -44,7 +44,6 @@ const sessionOptions = {
   },
 };
 
-
 const listingsRouter = require("./routes/listing.js");
 const reviewsRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
@@ -96,6 +95,18 @@ app.get("/", (req, res) => {
 
 app.all("*", (req, res, next) => {
   next(new ExpressError(404, "Page Not Found!"));
+});
+
+app.get("/privacy", (req, res) => {
+  res.send(
+    "<h1>Privacy Policy</h1><p>This is a demo app. No data is stored.</p>"
+  );
+});
+
+app.get("/terms", (req, res) => {
+  res.send(
+    "<h1>Terms of Service</h1><p>These are sample terms for demonstration purposes.</p>"
+  );
 });
 
 app.use((err, req, res, next) => {
